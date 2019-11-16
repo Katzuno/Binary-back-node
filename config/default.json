@@ -1,0 +1,16 @@
+{
+	"db": {
+		"string": "postgresql://doadmin:d982g32iqzsubm2b@db-postgresql-fra1-58778-do-user-6682694-0.db.ondigitalocean.com:25060/defaultdb?sslmode=require"
+	},
+	"modex": {
+		"tokenUrl": "http://142.93.103.182:9096/token",
+		"api": "http://142.93.103.182:9300/services/core/v1/api",
+		"account": {
+			"username": "bcdb.admin@modex.tech",
+			"password": "admin",
+			"grant_type": "password",
+			"client_id": "0x01",
+			"client_secret": "0x000001"
+		}
+	}
+}
