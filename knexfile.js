@@ -3,6 +3,8 @@ const config = require('config');
 pg.defaults.ssl = true;
 
 module.exports = {
-	client: 'pg',
-	connection: config.get('db.string')
+    client: 'sqlite3',
+    connection: {
+        filename: './db.sqlite3'
+    }
 };
