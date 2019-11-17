@@ -4,6 +4,8 @@ const axios = require('axios');
 const checkFace = img => {
     return axios.post('http://46.101.195.188:5000/api/face', {img_url: img}).then(res => {
         return res.data;
+    }).catch(err => {
+        // console.log(err)
     });
 }
 
@@ -15,9 +17,13 @@ const onMessage = async (socket, msg) => {
     }
     const res = (await axios.post('http://46.101.195.188:5000/api/analyse', requestData)).data;
 
-    const resFace = await checkFace(requestData.base64img);
-    if (!resFace.error)
-        await socket.send({type: 'face', data: resFace});
+    try {
+        const resFace = await checkFace(requestData.base64img);
+        if (resFace && !resFace.error)
+            await socket.send({type: 'face', data: resFace});
+    } catch (err) {
+        // console.log(err);
+    }
 
     await socket.send({type: 'imageData', data: res});
 
