@@ -2,7 +2,7 @@ const Nes = require('@hapi/nes');
 const axios = require('axios');
 
 const checkFace = img => {
-    return axios.post('http://46.101.195.188:5000/api/face', {img_url: img}).then(res => {
+    return axios.post('http://gdcb.ro:5000/api/face', {img_url: img}).then(res => {
         return res.data;
     }).catch(err => {
         // console.log(err)
@@ -15,7 +15,7 @@ const onMessage = async (socket, msg) => {
         height: msg.height,
         width: msg.width
     }
-    const res = (await axios.post('http://46.101.195.188:5000/api/analyse', requestData)).data;
+    const res = (await axios.post('http://gdcb.ro:5000/api/analyse', requestData)).data;
 
     try {
         const resFace = await checkFace(requestData.base64img);
